@@ -1,0 +1,17 @@
+export const CREDENTIALS_CHANGED = 'credentials_changed';
+export const LOGIN_USER = 'login_user';
+export const LOGIN_USER_SUCCESS = 'login_user_success';
+export const LOGIN_USER_FAIL = 'login_user_fail';
+export const CREATE_USER = 'create_user';
+export const CREATE_USER_SUCCESS = 'login_user_success';
+export const CREATE_USER_FAIL = 'login_user_fail';
+export const LOAD_PROFILE_HEADER_SUCCESS = 'load_profile_header_success';
+export const LOAD_PROFILE_HEADER_FAIL = 'load_profile_header_fail';
+export const LOAD_PROFILE_HEADER = 'load_profile_header';
+export const LOAD_PROFILE_IMAGES = 'load_profile_images';
+export const LOAD_PROFILE_IMAGES_SUCCESS = 'load_profile_images_success';
+export const LOAD_PROFILE_IMAGES_FAIL = 'load_profile_images_fail';
+export const LOAD_FEED = 'load_feed';
+export const LOAD_FEED_FAIL = 'load_feed_success';
+export const LOAD_FEED_SUCCESS = 'load_feed_fail';
+export const VERIFY_TOKEN = 'verify_token';
