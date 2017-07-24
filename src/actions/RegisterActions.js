@@ -29,7 +29,7 @@ export const createUser = ({ name, nickname, email, password, biography, photo }
 
 const createUserSuccess = (dispatch, result) => {
   setCache('userToken', result.user.token);
-  
+  setCache('userInfo', user);
   dispatch({
     type: CREATE_USER_SUCCESS,
     payload: result
