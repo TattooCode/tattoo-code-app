@@ -15,12 +15,12 @@ export const createUser = ({ name, nickname, email, password, biography, photo }
     });
     axios.post(registerUserByEmailRoute, 
     {
-        name,
-        nickname,
-        email,
-        password,
-        biography,
-        photo
+      name,
+      nickname,
+      email,
+      password,
+      biography,
+      photo
     })
     .then(response => createUserSuccess(dispatch, response.data.user))
     .catch((error) => createUserFail(dispatch, error));
