@@ -1,5 +1,6 @@
 import { Actions } from 'react-native-router-flux';
 import axios from 'axios';
+import { setCache } from '../config/Storage';
 import { registerUserByEmailRoute } from '../config/Routes';
 import {
   CREATE_USER,
@@ -26,10 +27,12 @@ export const createUser = ({ name, nickname, email, password, biography, photo }
   };
 };
 
-const createUserSuccess = (dispatch, user) => {
+const createUserSuccess = (dispatch, result) => {
+  setCache('userToken', result.user.token);
+  
   dispatch({
     type: CREATE_USER_SUCCESS,
-    payload: user
+    payload: result
   });
   Actions.main();
 };

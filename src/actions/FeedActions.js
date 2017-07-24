@@ -13,7 +13,7 @@ export const loadFeed = () => {
       dispatch({ 
         type: LOAD_FEED
       });
-      
+
       axios.get(feedRoute, { headers: { Authorization: `Bearer ${token}` } })
       .then(response => loadFeedSuccess(dispatch, response.data))
       .catch(() => loadFeedFail(dispatch));

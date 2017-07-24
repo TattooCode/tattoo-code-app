@@ -39,7 +39,7 @@ export const verifyToken = () => {
         type: VERIFY_TOKEN 
       });
       
-      axios.post(verifyTokenRoute, { headers: { Authorization: `Bearer ${token}` } })
+      axios.get(verifyTokenRoute, { headers: { Authorization: `Bearer ${token}` } })
         .then(response => loginUserSuccess(dispatch, response.data))
         .catch((error) => console.log(error));
     });
