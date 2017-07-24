@@ -9,13 +9,11 @@ if (ENV === 'prod') {
 }
 
 export const loginRoute = `${urlBase}/auth/signin`;
+export const verifyTokenRoute = `${urlBase}/auth/token`;
 export const registerUserByEmailRoute = `${urlBase}/auth/register/email`;
 export const registerUserByFacebookRoute = `${urlBase}/auth/register/facebook`;
 export const registerUserByGoogleRoute = `${urlBase}/auth/register/google`;
+
 export const loadProfileHeaderRoute = `${urlBase}/api/user/profile`;
 export const loadProfileImagesRoute = `${urlBase}/api/perfil/`; //perfil/id
 export const feedRoute = `${urlBase}/api/feed`;
-export const verifyTokenRoute = `${urlBase}/auth/token`;
-
-//export { loginRoute, loadProfileHeaderRoute, loadProfileImagesRoute };
-

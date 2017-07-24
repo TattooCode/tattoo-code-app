@@ -24,7 +24,7 @@ export const loginUserWithEmail = ({ email, password }) => {
     });
 
     axios.post(loginRoute, { email, password })
-      .then(response => loginUserSuccess(dispatch, response.data))
+      .then(response => loginUserSuccess(dispatch, response.data.user))
       .catch((error) => { 
           loginUserFail(dispatch);
           console.log(error); 
@@ -38,7 +38,7 @@ export const verifyToken = () => {
       dispatch({ 
         type: VERIFY_TOKEN 
       });
-      
+
       axios.get(verifyTokenRoute, { headers: { Authorization: `Bearer ${token}` } })
         .then(response => loginUserSuccess(dispatch, response.data))
         .catch((error) => console.log(error));
@@ -62,12 +62,13 @@ export const loginUserWithFacebook = (userID) => {
 
 const loginUserSuccess = (dispatch, user) => {
   setCache('userToken', user.token);
-  setCache('userInfo', user);
+  setCache('userInfo', JSON.stringify(user));
+
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: user
   });
-  Actions.main();
+  Actions.main({ type: 'reset' });
 };
 
 const loginUserFail = dispatch => {
