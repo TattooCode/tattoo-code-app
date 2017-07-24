@@ -61,7 +61,6 @@ export const loginUserWithFacebook = (userID) => {
 };
 
 const loginUserSuccess = (dispatch, user) => {
-  console.log(user);
   setCache('userToken', user.token);
   setCache('userInfo', JSON.stringify(user));
 
@@ -69,7 +68,7 @@ const loginUserSuccess = (dispatch, user) => {
     type: LOGIN_USER_SUCCESS,
     payload: user
   });
-  Actions.main();
+  Actions.main({ type: 'reset' });
 };
 
 const loginUserFail = dispatch => {
