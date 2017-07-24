@@ -16,7 +16,7 @@ export const loadHeader = () => {
         dispatch({ 
           type: LOAD_PROFILE_HEADER
         });
-        
+
         axios.get(loadProfileHeaderRoute, { headers: { Authorization: `Bearer ${token}` } })
         .then(response => loadHeaderSuccess(dispatch, response.data))
         .catch(() => loadHeaderFail(dispatch));

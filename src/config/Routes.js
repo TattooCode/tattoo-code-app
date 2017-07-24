@@ -5,7 +5,7 @@ let urlBase = null;
 if (ENV === 'prod') {
   urlBase = 'https://tattoo-code-api.herokuapp.com';
 } else if (ENV === 'dev') {
-  urlBase = 'http://localhost:3000/';
+  urlBase = 'http://192.168.2.120:3000';
 }
 
 export const loginRoute = `${urlBase}/auth/signin`;
