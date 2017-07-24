@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { TouchableHighlight } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-import { Button } from '../common';
-import I18n from '../../config/i18n';
 import styles from './styles';
 
 class ImagePickerComponent extends Component {
@@ -40,9 +38,9 @@ class ImagePickerComponent extends Component {
 
   render() {
     return (
-      <Button onPress={this.renderImagePicker.bind(this)}>
-        {I18n.t('choose_picture')}
-      </Button>
+      <TouchableHighlight onPress={this.renderImagePicker.bind(this)}>
+        {this.props.children}
+      </TouchableHighlight >
     );		
   }
 

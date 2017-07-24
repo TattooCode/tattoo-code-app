@@ -45,7 +45,11 @@ class Publication extends Component {
           <ImagePickerComponent 
             updateState={value => this.props.publicationChanged({ prop: 'photo', value })}
             autoStart  
-          />
+          >
+            <Text>Teste</Text>
+          </ImagePickerComponent> 
+
+
           <CardSection> 
             {this.renderButton()}
           </CardSection>
