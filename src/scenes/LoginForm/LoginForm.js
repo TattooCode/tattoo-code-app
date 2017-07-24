@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, Image } from 'react-native';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { credentialsChanged, loginUserWithEmail } from '../../actions';
 import { Card, CardSection, Input, Button, Spinner } from '../../components/common';
@@ -28,36 +28,38 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Image source={require('../../assets/backgrounds/pier.jpg')} style={styles.fullBackground}>
-        <Card style={styles.containerStyle}>
-          <CardSection>
-            <Input
-              label={I18n.t('label_email')}
-              placeholder={I18n.t('placeholder_email')}
-              onChangeText={value => this.props.credentialsChanged({ prop: 'email', value })}
-              value={this.props.email}
-            />
-          </CardSection>
+      <Card style={styles.containerStyle}>
+        <CardSection>
+          <Text style={styles.titleDescription}>Log in with email</Text>
+        </CardSection>
 
-          <CardSection>
-            <Input
-              secureTextEntry
-              label={I18n.t('label_password')}
-              placeholder={I18n.t('placeholder_password')}
-              onChangeText={value => this.props.credentialsChanged({ prop: 'password', value })}
-              value={this.props.password}
-            />
-          </CardSection>
+        <CardSection>
+          <Input
+            label={I18n.t('label_email')}
+            placeholder={I18n.t('placeholder_email')}
+            onChangeText={value => this.props.credentialsChanged({ prop: 'email', value })}
+            value={this.props.email}
+          />
+        </CardSection>
 
-          <Text style={styles.errorTextStyle}>
-            {this.props.error}
-          </Text>
+        <CardSection>
+          <Input
+            secureTextEntry
+            label={I18n.t('label_password')}
+            placeholder={I18n.t('placeholder_password')}
+            onChangeText={value => this.props.credentialsChanged({ prop: 'password', value })}
+            value={this.props.password}
+          />
+        </CardSection>
 
-          <CardSection>
-            {this.renderButton()}
-          </CardSection>
-        </Card>
-      </Image>
+        <Text style={styles.errorTextStyle}>
+          {this.props.error}
+        </Text>
+
+        <CardSection>
+          {this.renderButton()}
+        </CardSection>
+      </Card>
     );
   }
 }
