@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Image, ScrollView } from 'react-native';
+import { Image, ScrollView, Text } from 'react-native';
 import { credentialsChanged, createUser } from '../../actions';
 import { Card, CardSection, Input, Button, Spinner } from '../../components/common';
 import { ImagePickerComponent } from '../../components/ImagePickerComponent';
@@ -34,67 +34,70 @@ class BasicAccountCreate extends Component {
 		
 	render() {
 		return (
-			<Image source={require('../../assets/backgrounds/imagem01.jpg')} style={styles.fullBackground}>
-				<ScrollView>
-					<Card style={styles.containerStyle}>
-						<CardSection>
-							<Input 
-								label={I18n.t('label_name')}
-								placeholder={I18n.t('placeholder_name')}
-								value={this.props.nome}
-								onChangeText={value => this.props.credentialsChanged({ prop: 'name', value })}
-							/> 
-						</CardSection> 
-						
-						<CardSection>
-							<Input 
-								label={I18n.t('label_nickname')}
-								placeholder={I18n.t('placeholder_nickname')}
-								value={this.props.nickname}
-								onChangeText={value => this.props.credentialsChanged({ prop: 'nickname', value })}
-							/>
-						</CardSection>
-						
-						<CardSection>
-							<Input 
-								label={I18n.t('label_email')}
-								placeholder={I18n.t('placeholder_email')}
-								value={this.props.email}
-								onChangeText={value => this.props.credentialsChanged({ prop: 'email', value })}
-							/>
-						</CardSection> 
-						
-						<CardSection>
-							<Input
-								secureTextEntry 
-								label={I18n.t('label_password')}
-								placeholder={I18n.t('placeholder_password')}
-								value={this.props.password}
-								onChangeText={value => this.props.credentialsChanged({ prop: 'password', value })}	
-							/>
-						</CardSection>
-						
-						<CardSection>
-							<Input 
-								label={I18n.t('label_biography')}
-								placeholder={I18n.t('placeholder_biography')}
-								value={this.props.biography}
-								onChangeText={value => this.props.credentialsChanged({ prop: 'biography', value })}
-							/> 
-						</CardSection>
+			<ScrollView>
+				<Card style={styles.containerStyle}>
 
-						<CardSection>
-							<ImagePickerComponent 
-								updateState={value => this.props.credentialsChanged({ prop: 'photo', value })}
-							/>
-						</CardSection>
+					<CardSection>
+						<Text style={styles.titleDescription}>Sign up with email</Text>
+					</CardSection>
 
-						<CardSection> 
-							{this.renderButton()}
-						</CardSection>
-					</Card>
-				</ScrollView>
-			</Image>
+					<CardSection>
+						<Input 
+							label={I18n.t('label_name')}
+							placeholder={I18n.t('placeholder_name')}
+							value={this.props.nome}
+							onChangeText={value => this.props.credentialsChanged({ prop: 'name', value })}
+						/> 
+					</CardSection> 
+					
+					<CardSection>
+						<Input 
+							label={I18n.t('label_nickname')}
+							placeholder={I18n.t('placeholder_nickname')}
+							value={this.props.nickname}
+							onChangeText={value => this.props.credentialsChanged({ prop: 'nickname', value })}
+						/>
+					</CardSection>
+					
+					<CardSection>
+						<Input 
+							label={I18n.t('label_email')}
+							placeholder={I18n.t('placeholder_email')}
+							value={this.props.email}
+							onChangeText={value => this.props.credentialsChanged({ prop: 'email', value })}
+						/>
+					</CardSection> 
+					
+					<CardSection>
+						<Input
+							secureTextEntry 
+							label={I18n.t('label_password')}
+							placeholder={I18n.t('placeholder_password')}
+							value={this.props.password}
+							onChangeText={value => this.props.credentialsChanged({ prop: 'password', value })}	
+						/>
+					</CardSection>
+					
+					<CardSection>
+						<Input 
+							label={I18n.t('label_biography')}
+							placeholder={I18n.t('placeholder_biography')}
+							value={this.props.biography}
+							onChangeText={value => this.props.credentialsChanged({ prop: 'biography', value })}
+						/> 
+					</CardSection>
+
+					<CardSection>
+						<ImagePickerComponent 
+							updateState={value => this.props.credentialsChanged({ prop: 'photo', value })}
+						/>
+					</CardSection>
+
+					<CardSection> 
+						{this.renderButton()}
+					</CardSection>
+				</Card>
+			</ScrollView>
 		);
 	}
 }

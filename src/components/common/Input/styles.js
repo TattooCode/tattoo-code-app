@@ -9,18 +9,24 @@ const styles = {
   labelStyle: {
     fontSize: 18,
     paddingLeft: 20,
-    flex: 1,
     color: '#FFF',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    flex: 1
   },
   inputStyle: {
-    color: '#FFF',
+    color: '#fff',
     paddingRight: 5,
     paddingLeft: 5,
     fontSize: 18, 
-    lineHeight: 60,
+    lineHeight: 10,
+    backgroundColor: 'transparent',
+    height: 40,
+    width: '80%',
+    borderWidth: 1,
+    borderColor: '#1F2421',
+    borderRadius: 3,
     flex: 2,
-    borderColor: '#FFF'
+    marginRight: 15
   }
 };
 

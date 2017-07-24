@@ -18,15 +18,6 @@ const RouterComponent = () => {
   return (
     <Router>
 
-      <Scene key="publication" Initial>
-        <Scene
-          Initial
-          key="Publication" 
-          component={Publication}
-          title={I18n.t('navPublication')}
-        />
-      </Scene> 
-
       <Scene key="auth" initial>
         <Scene
           Initial
@@ -34,11 +25,14 @@ const RouterComponent = () => {
           component={LoginMethod}
           hideNavBar={'true'}
         />
+
         <scene
           key="basicAccountCreate"
           component={BasicAccountCreate}
           title="Create your account"
+          hideNavBar={'true'}
         />
+
         <Scene
           key="loginEmail"
           component={LoginForm}
@@ -54,7 +48,7 @@ const RouterComponent = () => {
             component={Feed}
             title="Feed"
         />
-      </Scene> 
+      </Scene>
       
       <Scene key="profile">
         <Scene
@@ -62,6 +56,15 @@ const RouterComponent = () => {
           key="UserProfile" 
           component={UserProfile}
           title={I18n.t('navProfile')}
+        />
+      </Scene>
+
+      <Scene key="publication" Initial>
+        <Scene
+          Initial
+          key="Publication" 
+          component={Publication}
+          title={I18n.t('navPublication')}
         />
       </Scene>
 
