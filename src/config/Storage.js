@@ -4,6 +4,7 @@ async function setCache(item, value) {
   try {
     await AsyncStorage.setItem(`@${item}`, value);
   } catch (error) {
+    console.log(error);
     return error;
   }
 }
@@ -13,6 +14,7 @@ async function getCache(item, callback) {
     let value = await AsyncStorage.getItem(`@${item}`);
     callback(value);
   } catch (error) {
+    console.log(error);
     return error;
   }
 }

@@ -22,21 +22,23 @@ export const createUser = ({ name, nickname, email, password, biography, photo }
         biography,
         photo
     })
-    .then(response => createUserSuccess(dispatch, response.data))
-    .catch(() => createUserFail(dispatch));
+    .then(response => createUserSuccess(dispatch, response.data.user))
+    .catch((error) => createUserFail(dispatch, error));
   };
 };
 
-const createUserSuccess = (dispatch, result) => {
-  setCache('userToken', result.user.token);
-  setCache('userInfo', user);
+const createUserSuccess = (dispatch, user) => {
+  setCache('userToken', user.token);
+  setCache('userInfo', JSON.stringify(user));
+
   dispatch({
     type: CREATE_USER_SUCCESS,
-    payload: result
+    payload: user
   });
   Actions.main();
 };
 
-const createUserFail = dispatch => {
+const createUserFail = (dispatch, error) => {
+  console.log(error);
   dispatch({ type: CREATE_USER_FAIL });
 };
