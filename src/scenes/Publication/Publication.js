@@ -15,7 +15,7 @@ class Publication extends Component {
   }
 
   onButtonPress() {
-		const { description, photo } = this.props;
+		const { description, photo } = this.state;
 		
 		this.props.publish({ description, photo });
 	}
@@ -43,13 +43,17 @@ class Publication extends Component {
             multiline
             numberOfLines={4}
             style={styles.inputDescription} 
-            onChangeText={value => this.props.publicationChanged({ prop: 'description', value })}
+            onChangeText={value => { 
+              this.props.publicationChanged({ prop: 'description', value });
+              this.setState({ description: value });
+            }}
           />
 
           <ImagePickerComponent 
             updateState={value => {
               this.props.publicationChanged({ prop: 'photo', value });
               this.setState({ thumb: `data:image/jpeg;base64, ${value.data}` });
+              this.setState({ photo: value });
             }}
             autoStart  
           >

@@ -16,18 +16,20 @@ export const loadFeed = () => {
 
       axios.get(feedRoute, { headers: { Authorization: `Bearer ${token}` } })
       .then(response => loadFeedSuccess(dispatch, response.data))
-      .catch(() => loadFeedFail(dispatch));
+      .catch((error) => loadFeedFail(dispatch, error));
     });
   };
 };
 
 const loadFeedSuccess = (dispatch, data) => {
+  console.log(data);
   dispatch({
     type: LOAD_FEED_SUCCESS,
     payload: data
   });
 };
 
-const loadFeedFail = dispatch => {
+const loadFeedFail = (dispatch, error) => {
+  console.log(error);
   dispatch({ type: LOAD_FEED_FAIL });
 };

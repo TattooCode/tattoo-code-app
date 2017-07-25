@@ -11,6 +11,29 @@ const Post = ({ post }) => {
     Actions.userProfile({ authorId });
   };
 
+  const dateDiff = (dateProp) => {
+    const dateNow = new Date();
+    const datePost = new Date(dateProp);
+
+    let delta = Math.abs(datePost - dateNow) / 1000;
+
+    const days = Math.floor(delta / 86400);
+    delta -= days * 86400;
+
+    const hours = Math.floor(delta / 3600) % 24;
+    delta -= hours * 3600;
+
+    const minutes = Math.floor(delta / 60) % 60;
+    delta -= minutes * 60;
+
+    const seconds = delta * 60;
+
+    if (seconds < 60) return `${Math.round(seconds)} seconds ago`;
+    else if (minutes < 60) return `${minutes} minuts ago`;
+    else if (hours > 24) return `${hours} hours ago`;
+    return `${days} days ago`;
+  };
+
   return (
     <Card>
       <CardSection>
@@ -27,7 +50,7 @@ const Post = ({ post }) => {
         <TouchableNativeFeedback onPress={loadProfile.bind(this)}>
           <Text style={styles.postUser}>{author}</Text>
         </TouchableNativeFeedback>
-        <Text style={styles.postTime}>{new Date() - date}</Text>
+        <Text style={styles.postTime}>{dateDiff(date)}</Text>
       </CardSection>
 
       <CardSection style={styles.post}>
