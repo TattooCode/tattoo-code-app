@@ -1,11 +1,16 @@
 import React from 'react';
-import { Text, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { Text, Image, TouchableNativeFeedback } from 'react-native';
 import { Card, CardSection } from '../common';
 import styles from './styles';
 
 const Post = ({ post }) => {
-  const { uri, author, date, description, nailAmount } = post;
+  const { uri, author, authorId, date, description, nailAmount } = post;
   
+  const loadProfile = () => {
+    Actions.userProfile({ authorId });
+  };
+
   return (
     <Card>
       <CardSection>
@@ -19,7 +24,9 @@ const Post = ({ post }) => {
       </CardSection>
 
       <CardSection style={styles.post}>
-        <Text style={styles.postUser}>{author}</Text>
+        <TouchableNativeFeedback onPress={loadProfile.bind(this)}>
+          <Text style={styles.postUser}>{author}</Text>
+        </TouchableNativeFeedback>
         <Text style={styles.postTime}>{new Date() - date}</Text>
       </CardSection>
 

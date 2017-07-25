@@ -7,12 +7,10 @@ import { NavScenes } from '../../components/NavScenes';
 import { loadHeader, loadImages } from '../../actions';
 import styles from './styles';
 
-// API: api/profile/1
-
 class UserProfile extends Component {
 
   componentWillMount() {
-    this.props.loadHeader();
+    this.props.loadHeader(this.props.authorId);
     //this.props.loadImages();
   }
 

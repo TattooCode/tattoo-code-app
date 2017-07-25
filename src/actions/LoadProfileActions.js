@@ -10,29 +10,31 @@ import {
   LOAD_PROFILE_IMAGES_FAIL
 } from './types';
 
-export const loadHeader = () => {
-    return (dispatch) => {
-      getCache('userToken', (token) => {
-        dispatch({ 
-          type: LOAD_PROFILE_HEADER
-        });
+export const loadHeader = (authorId = '') => {
+  return (dispatch) => {
+    getCache('userToken', (token) => {
+      dispatch({ 
+        type: LOAD_PROFILE_HEADER
+      });
 
-        axios.get(loadProfileHeaderRoute, { headers: { Authorization: `Bearer ${token}` } })
+      axios.get(`${loadProfileHeaderRoute}/${authorId}`, 
+      { headers: { Authorization: `Bearer ${token}` } })
         .then(response => loadHeaderSuccess(dispatch, response.data))
         .catch(() => loadHeaderFail(dispatch));
-      });
+    });
   };
 };
 
-export const loadImages = () => {
+export const loadImages = (authorId = '') => {
   return (dispatch) => {
     getCache('userToken', (token) => {
       dispatch({ 
         type: LOAD_PROFILE_IMAGES
       });
-      axios.post(loadProfileImagesRoute, { headers: { Authorization: `Bearer ${token}` } })
-      .then(response => loadImagesSuccess(dispatch, response.data))
-      .catch(() => loadImageFail(dispatch));
+      axios.post(`${loadProfileImagesRoute}/${authorId}`, 
+      { headers: { Authorization: `Bearer ${token}` } })
+        .then(response => loadImagesSuccess(dispatch, response.data))
+        .catch(() => loadImageFail(dispatch));
     });
   };
 };
