@@ -46,7 +46,7 @@ class Publication extends Component {
             updateState={value => this.props.publicationChanged({ prop: 'photo', value })}
             autoStart  
           >
-            <Text>Teste</Text>
+            <Text>Upload your image</Text>
           </ImagePickerComponent> 
 
 

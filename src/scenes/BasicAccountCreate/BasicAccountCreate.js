@@ -90,7 +90,9 @@ class BasicAccountCreate extends Component {
 					<CardSection>
 						<ImagePickerComponent 
 							updateState={value => this.props.credentialsChanged({ prop: 'photo', value })}
-						/>
+						>
+							<Text>Upload your image</Text>
+						</ImagePickerComponent>
 					</CardSection>
 
 					<CardSection> 
