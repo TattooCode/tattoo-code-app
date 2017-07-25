@@ -7,11 +7,8 @@ const UserPicDetail = ({ image }) => {
   return (    
     <Image 
       style={{ width: 120, height: 120, margin: 7 }} 
-      source={{  
-            uri,
-            method: 'GET'
-          }} 
-    />
+      source={{ uri, method: 'GET' }} 
+    />  
   );
 };
 

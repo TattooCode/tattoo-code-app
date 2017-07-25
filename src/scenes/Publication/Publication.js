@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text, TextInput } from 'react-native';
+import { ScrollView, View, Text, TextInput, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { publish, publicationChanged } from '../../actions';
 import { NavScenes } from '../../components/NavScenes';
@@ -23,7 +23,7 @@ class Publication extends Component {
 		
 		return (
 			<Button onPress={this.onButtonPress.bind(this)}>
-				{I18n.t('button_create_account')}
+        Publish
 			</Button>
 		);
 	}
@@ -46,7 +46,10 @@ class Publication extends Component {
             updateState={value => this.props.publicationChanged({ prop: 'photo', value })}
             autoStart  
           >
-            <Text>Upload your image</Text>
+            <Image 
+              style={{ width: 120, height: 120, margin: 7 }} 
+              source={{ uri: this.props.photo || 'http://via.placeholder.com/120x120' }} 
+            />
           </ImagePickerComponent> 
 
 
