@@ -9,11 +9,10 @@ import {
   PUBLICATION_CHANGE
 } from './types';
 
-
-export const publicationChanged = (text) => {
+export const publicationChanged = ({ prop, value }) => {
   return {
     type: PUBLICATION_CHANGE,
-    payload: text
+    payload: { prop, value }
   };
 };
 

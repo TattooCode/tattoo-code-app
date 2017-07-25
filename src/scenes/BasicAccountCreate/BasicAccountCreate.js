@@ -9,10 +9,9 @@ import styles from './styles';
 
 class BasicAccountCreate extends Component {
 
-	constructor(props) {
-		super(props);
-		this.state = { photo: '' };
-	}
+	componentWillMount() {
+    this.setState({ thumb: 'https://brewerjwebdesign.com/wp-content/uploads/2014/03/wp_upload_bits.png' });
+  }
 	
 	onButtonPress() {
 		const { name, nickname, email, password, biography, photo } = this.props;
@@ -89,9 +88,15 @@ class BasicAccountCreate extends Component {
 
 					<CardSection>
 						<ImagePickerComponent 
-							updateState={value => this.props.credentialsChanged({ prop: 'photo', value })}
+							updateState={value => {
+								this.props.credentialsChanged({ prop: 'photo', value });
+								this.setState({ thumb: `data:image/jpeg;base64, ${value.data}` });
+							}}
 						>
-							<Text>Upload your image</Text>
+							<Image 
+								style={{ alignSelf: 'center', width: 200, height: 200, margin: 7 }} 
+								source={{ uri: this.state.thumb }} 
+							/>
 						</ImagePickerComponent>
 					</CardSection>
 

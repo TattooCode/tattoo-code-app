@@ -44,7 +44,7 @@ class LoginMethod extends Component {
           <CardSection>
             <LoginButton
             publishPermissions={['publish_actions']}
-            style={{ width: 270, height: 50 }}
+            style={{ width: 220, height: 40 }}
             onLoginFinished={
               (error, result) => {
                 if (error) {

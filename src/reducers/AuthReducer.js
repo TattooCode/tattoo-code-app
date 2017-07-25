@@ -25,7 +25,7 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN_USER:
       return { ...state, loading: true, error: '' };
     case VERIFY_TOKEN:
-      return { ...state, loading: true, error: '' };
+      return { ...state, loading: false, error: '' };
     default:
       return state;
   }
