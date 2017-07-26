@@ -8,7 +8,6 @@ import com.i18n.reactnativei18n.ReactNativeI18n;
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
 import com.imagepicker.ImagePickerPackage;
-import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -37,7 +36,6 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new ImagePickerPackage(),
-            new RNGoogleSigninPackage(),
             new FBSDKPackage(mCallbackManager),
             new ReactNativeI18n()
       );
