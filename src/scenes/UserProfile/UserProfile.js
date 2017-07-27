@@ -11,7 +11,7 @@ import styles from './styles';
 class UserProfile extends Component {
 
   componentWillMount() {
-    this.props.loadHeader(this.props.authorId);
+    this.props.loadHeader(this.props.user.id);
     //this.props.loadImages();
   }
 
