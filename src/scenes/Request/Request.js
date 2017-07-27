@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Text, TextInput, Dimensions } from 'react-native';
+import { ScrollView, View, Text, TextInput, Dimensions, Image } from 'react-native';
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps';
 import { NavScenes } from '../../components/NavScenes';
 import { ImagePickerComponent } from '../../components/ImagePickerComponent';
+import { Card, CardSection, Button, Spinner } from '../../components/common';
 import styles from './styles';
-
+import I18n from '../../config/i18n';
 
 const { height, width } = Dimensions.get('window');
 const SCREEN_HEIGH = height;
@@ -35,8 +36,13 @@ class Request extends Component {
       const accuracy = position.coords.accuracy;
       this.calcDelta(lat, long, accuracy);
     });
+  }
 
-
+  onButtonPress() {
+    //Create actions
+    
+		const { name, nickname, email, password, biography, photo } = this.props;
+		this.props.createUser({ name, nickname, email, password, biography, photo });
   }
 
   calcDelta(lat, long, accuracy) {
@@ -61,6 +67,18 @@ class Request extends Component {
       longitude: this.state.region.longitude
     };
   }
+
+  renderButton() {
+		if (this.props.loading) {
+			return <Spinner size="large" />;
+		}
+		
+		return (
+			<Button onPress={this.onButtonPress.bind(this)} style={{ marginTop: 20 }}>
+				{I18n.t('button_create_account')}
+			</Button>
+		);
+	}
 
   render() {
     return (
@@ -87,6 +105,19 @@ class Request extends Component {
             underlineColorAndroid='transparent'
           />
 
+          <ImagePickerComponent 
+							updateState={value => {
+								this.props.credentialsChanged({ prop: 'photo', value });
+								this.setState({ thumb: `data:image/jpeg;base64, ${value.data}` });
+							}}
+					>
+            <Image 
+              style={{ width: 200, height: 200 }} 
+              source={{ uri: this.state.thumb }}
+            />
+					</ImagePickerComponent>
+          
+          {this.renderButton()}
         </ScrollView>
 
         <View style={{ flex: 0.1 }}>

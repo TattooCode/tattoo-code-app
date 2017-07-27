@@ -17,7 +17,36 @@ import I18n from './config/i18n';
 const RouterComponent = () => {
   return (
     <Router>
-      <Scene key="auth" Initial>
+    
+      <Scene key="main" Initial> 
+        <Scene
+          Initial
+          key="request" 
+          component={Request}
+          title={I18n.t('navRequest')}
+        />
+        
+        <Scene
+          key="feed"
+          component={Feed}
+          title="Feed"
+        />
+      
+        <Scene
+          key="userProfile" 
+          component={UserProfile}
+          title={I18n.t('navProfile')}
+        />
+
+        <Scene
+          key="publish" 
+          component={Publication}
+          title={I18n.t('navPublication')}
+        />
+      </Scene>
+
+
+      <Scene key="auth">
         <Scene
           Initial
           key="loginMethod"
@@ -37,33 +66,6 @@ const RouterComponent = () => {
           component={BasicAccountCreate}
           title="Create your account"
           hideNavBar={'true'}
-        />
-      </Scene>
-
-      <Scene key="main">
-        <Scene
-          Initial
-          key="feed"
-          component={Feed}
-          title="Feed"
-        />
-      
-        <Scene
-          key="userProfile" 
-          component={UserProfile}
-          title={I18n.t('navProfile')}
-        />
-
-        <Scene
-          key="publish" 
-          component={Publication}
-          title={I18n.t('navPublication')}
-        />
-
-        <Scene
-          key="request" 
-          component={Request}
-          title={I18n.t('navRequest')}
         />
       </Scene>
      

@@ -10,8 +10,8 @@ import styles from './styles';
 class BasicAccountCreate extends Component {
 
 	componentWillMount() {
-    this.setState({ thumb: 'https://brewerjwebdesign.com/wp-content/uploads/2014/03/wp_upload_bits.png' });
-  }
+		this.setState({ thumb: 'https://brewerjwebdesign.com/wp-content/uploads/2014/03/wp_upload_bits.png' });
+	}
 	
 	onButtonPress() {
 		const { name, nickname, email, password, biography, photo } = this.props;
@@ -111,7 +111,6 @@ class BasicAccountCreate extends Component {
 
 const mapStateToProps = ({ register }) => {
 	const { name, nickname, email, password, biography, photo } = register;
-	
 	return { name, nickname, email, password, biography, photo };
 };
 
