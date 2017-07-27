@@ -1,23 +1,26 @@
 const styles = {
   containerStyle: {
     flex: 1,
-    backgroundColor: '#93171D',
-    paddingBottom: 200,
-    paddingTop: 50
+    backgroundColor: '#fff',
+    paddingBottom: 20,
+    paddingTop: 50,
+    paddingLeft: 20,
+    paddingRight: 20
   },
   titleDescription: {
     fontSize: 30,
-    color: '#FFF',
+    color: '#000',
     marginBottom: 30,
     textAlign: 'center',
-    textShadowOffset: { width: 0, height: 2 },
-    textShadowColor: '#000',
     width: '100%',
-    fontFamily: 'Verdana'
+    fontWeight: 'bold'
   },
   errorTextStyle: {
     fontSize: 20,
     alignSelf: 'center'
+  },
+  cardSpace: {
+    marginBottom: 10
   }
 };
 

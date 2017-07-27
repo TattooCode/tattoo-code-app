@@ -40,7 +40,7 @@ class BasicAccountCreate extends Component {
 						<Text style={styles.titleDescription}>Sign up with email</Text>
 					</CardSection>
 
-					<CardSection>
+					<CardSection style={styles.cardSpace}>
 						<Input 
 							label={I18n.t('label_name')}
 							placeholder={I18n.t('placeholder_name')}
@@ -49,7 +49,7 @@ class BasicAccountCreate extends Component {
 						/> 
 					</CardSection> 
 					
-					<CardSection>
+					<CardSection style={styles.cardSpace}>
 						<Input 
 							label={I18n.t('label_nickname')}
 							placeholder={I18n.t('placeholder_nickname')}
@@ -58,7 +58,7 @@ class BasicAccountCreate extends Component {
 						/>
 					</CardSection>
 					
-					<CardSection>
+					<CardSection style={styles.cardSpace}>
 						<Input 
 							label={I18n.t('label_email')}
 							placeholder={I18n.t('placeholder_email')}
@@ -67,7 +67,7 @@ class BasicAccountCreate extends Component {
 						/>
 					</CardSection> 
 					
-					<CardSection>
+					<CardSection style={styles.cardSpace}>
 						<Input
 							secureTextEntry 
 							label={I18n.t('label_password')}
@@ -77,7 +77,7 @@ class BasicAccountCreate extends Component {
 						/>
 					</CardSection>
 					
-					<CardSection>
+					<CardSection style={styles.cardSpace}>
 						<Input 
 							label={I18n.t('label_biography')}
 							placeholder={I18n.t('placeholder_biography')}
@@ -86,7 +86,7 @@ class BasicAccountCreate extends Component {
 						/> 
 					</CardSection>
 
-					<CardSection>
+					<CardSection style={styles.cardSpace}>
 						<ImagePickerComponent 
 							updateState={value => {
 								this.props.credentialsChanged({ prop: 'photo', value });
@@ -94,8 +94,8 @@ class BasicAccountCreate extends Component {
 							}}
 						>
 							<Image 
-								style={{ alignSelf: 'center', width: 200, height: 200, margin: 7 }} 
-								source={{ uri: this.state.thumb }} 
+								style={{ width: 200, height: 200 }} 
+								source={{ uri: this.state.thumb }}
 							/>
 						</ImagePickerComponent>
 					</CardSection>

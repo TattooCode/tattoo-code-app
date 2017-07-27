@@ -33,7 +33,7 @@ class LoginForm extends Component {
           <Text style={styles.titleDescription}>Log in with email</Text>
         </CardSection>
 
-        <CardSection>
+        <CardSection style={styles.cardSpace}>
           <Input
             label={I18n.t('label_email')}
             placeholder={I18n.t('placeholder_email')}
@@ -42,7 +42,7 @@ class LoginForm extends Component {
           />
         </CardSection>
 
-        <CardSection>
+        <CardSection style={styles.cardSpace}>
           <Input
             secureTextEntry
             label={I18n.t('label_password')}
