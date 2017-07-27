@@ -22,7 +22,6 @@ export const loadFeed = () => {
 };
 
 const loadFeedSuccess = (dispatch, data) => {
-  console.log(data);
   dispatch({
     type: LOAD_FEED_SUCCESS,
     payload: data

@@ -5,10 +5,10 @@ import { Card, CardSection } from '../common';
 import styles from './styles';
 
 const Post = ({ post }) => {
-  const { uri, author, authorId, date, description, nailAmount } = post;
+  const { uri, user, date, description, nailAmount } = post;
   
   const loadProfile = () => {
-    Actions.userProfile({ authorId });
+    Actions.userProfile({ user });
   };
 
   const dateDiff = (dateProp) => {
@@ -16,21 +16,25 @@ const Post = ({ post }) => {
     const datePost = new Date(dateProp);
 
     let delta = Math.abs(datePost - dateNow) / 1000;
+    let hours;
+    let minutes;
 
     const days = Math.floor(delta / 86400);
     delta -= days * 86400;
 
-    const hours = Math.floor(delta / 3600) % 24;
+    hours = Math.floor(delta / 3600) % 24;
     delta -= hours * 3600;
+    hours *= 24;
 
-    const minutes = Math.floor(delta / 60) % 60;
+    minutes = Math.floor(delta / 60) % 60;
     delta -= minutes * 60;
+    minutes *= 60;
 
     const seconds = delta * 60;
 
     if (seconds < 60) return `${Math.round(seconds)} seconds ago`;
     else if (minutes < 60) return `${minutes} minuts ago`;
-    else if (hours > 24) return `${hours} hours ago`;
+    else if (hours < 24) return `${hours} hours ago`;
     return `${days} days ago`;
   };
 
@@ -48,7 +52,7 @@ const Post = ({ post }) => {
 
       <CardSection style={styles.post}>
         <TouchableNativeFeedback onPress={loadProfile.bind(this)}>
-          <Text style={styles.postUser}>{author}</Text>
+          <Text style={styles.postUser}>{user.name}</Text>
         </TouchableNativeFeedback>
         <Text style={styles.postTime}>{dateDiff(date)}</Text>
       </CardSection>
