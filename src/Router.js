@@ -19,8 +19,16 @@ const RouterComponent = () => {
     <Router>
       <Scene key="auth" Initial>
         <Scene
+          Initial
           key="loginMethod"
           component={LoginMethod}
+          hideNavBar={'true'}
+        />
+        
+        <Scene
+          key="loginEmail"
+          component={LoginForm}
+          title={I18n.t('header_login')}
           hideNavBar={'true'}
         />
 
@@ -28,13 +36,6 @@ const RouterComponent = () => {
           key="basicAccountCreate"
           component={BasicAccountCreate}
           title="Create your account"
-          hideNavBar={'true'}
-        />
-
-        <Scene
-          key="loginEmail"
-          component={LoginForm}
-          title={I18n.t('header_login')}
           hideNavBar={'true'}
         />
       </Scene>

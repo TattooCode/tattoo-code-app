@@ -5,22 +5,27 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 50,
-    backgroundColor: '#93171D'
+    paddingLeft: 20,
+    paddingRight: 20,
+    backgroundColor: '#F9FFF2'
   },
   titleDescription: {
     fontSize: 30,
-    color: '#FFF',
+    color: '#000',
     marginBottom: 30,
     textAlign: 'center',
-    textShadowOffset: { width: 0, height: 2 },
     textShadowColor: '#000',
     width: '100%',
-    fontFamily: 'Verdana'
+    fontFamily: 'Verdana',
+    fontWeight: 'bold'
   },
   errorTextStyle: {
     fontSize: 20,
     alignSelf: 'center',
     color: '#F2F6F5'
+  },
+  cardSpace: {
+    marginBottom: 10
   }
 };
 

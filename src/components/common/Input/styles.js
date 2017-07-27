@@ -1,32 +1,28 @@
-
 const styles = {
   containerStyle: {
-    height: 60,
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center'
+    height: 65,
   },
   labelStyle: {
     fontSize: 18,
-    paddingLeft: 20,
-    color: '#FFF',
+    color: '#000',
     fontWeight: 'bold',
-    flex: 1
+    textAlign: 'left',
+    lineHeight: 18,
+    marginBottom: 10
   },
   inputStyle: {
-    color: '#fff',
-    paddingRight: 5,
-    paddingLeft: 5,
+    color: '#000',
     fontSize: 18, 
     lineHeight: 10,
     backgroundColor: 'transparent',
     height: 40,
-    width: '80%',
-    borderWidth: 1,
+    width: '100%',
+    borderWidth: 0.5,
     borderColor: '#1F2421',
     borderRadius: 3,
-    flex: 2,
-    marginRight: 15
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 };
 
