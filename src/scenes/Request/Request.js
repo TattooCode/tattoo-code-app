@@ -3,11 +3,11 @@ import { ScrollView, View, Text, TextInput, Dimensions, Image } from 'react-nati
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps';
 
-import { createRequest } from '../../actions';
+// import {  } from '../../actions';
 
 import { NavScenes } from '../../components/NavScenes';
 import { ImagePickerComponent } from '../../components/ImagePickerComponent';
-import { Card, CardSection, Button, Spinner } from '../../components/common';
+import { Button, Spinner } from '../../components/common';
 import styles from './styles';
 import I18n from '../../config/i18n';
 
