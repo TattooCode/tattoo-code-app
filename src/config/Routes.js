@@ -18,3 +18,6 @@ export const loadProfileHeaderRoute = `${urlBase}/api/user/profile`;
 export const loadProfileImagesRoute = `${urlBase}/api/perfil/`; //perfil/id
 export const feedRoute = `${urlBase}/api/feed`;
 export const loadStudiosRoute = `${urlBase}/api/studio`;
+
+export const ideaRoute = `${urlBase}/api/idea`;
+
