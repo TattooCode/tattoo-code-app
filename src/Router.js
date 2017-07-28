@@ -9,6 +9,7 @@ import { Feed } from './scenes/Feed';
 import { UserProfile } from './scenes/UserProfile';
 import { Publication } from './scenes/Publication';
 import { Request } from './scenes/Request';
+import { Notification } from './scenes/Notification';
 // Idiomas
 import I18n from './config/i18n';
 
@@ -63,6 +64,11 @@ const RouterComponent = () => {
         <Scene
           key="request" 
           component={Request}
+          title={I18n.t('navRequest')}
+        />
+        <Scene
+          key="notification" 
+          component={Notification}
           title={I18n.t('navRequest')}
         />
       </Scene>

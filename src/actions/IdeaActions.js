@@ -14,7 +14,7 @@ export const loadIdeaNotification = () => {
         type: LOAD_IDEA_NOTIFICATIONS
       });
 
-      axios.post(ideaRoute, { headers: { Authorization: `Bearer ${token}` } })
+      axios.get(ideaRoute, { headers: { Authorization: `Bearer ${token}` } })
         .then(response => loadIdeaNotificationSuccess(dispatch, response.data))
         .catch((error) => loadIdeaNotificationFail(dispatch, error));
     });
