@@ -19,3 +19,6 @@ export const PUBLISH = 'publish';
 export const PUBLISH_SUCCESS = 'publish_success';
 export const PUBLISH_FAIL = 'publish_fail';
 export const PUBLICATION_CHANGE = 'publication_change';
+export const LOAD_IDEA_NOTIFICATIONS = 'load_idea_notifications';
+export const LOAD_IDEA_NOTIFICATIONS_SUCCESS = 'load_idea_notifications_success';
+export const LOAD_IDEA_NOTIFICATIONS_FAIL = 'load_idea_notifications_fail';
