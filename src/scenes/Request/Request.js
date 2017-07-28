@@ -67,6 +67,8 @@ class Request extends Component {
 
   marker() {
     return {
+
+      
       latitude: this.state.region.latitude,
       longitude: this.state.region.longitude
     };
