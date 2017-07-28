@@ -17,7 +17,7 @@ export const styles = {
     width: 50
   },
   imageStyle: {
-    height: 300,
+    height: 200,
     flex: 1,
     width: null
   }
