@@ -41,7 +41,6 @@ const loadIdeaNotificationFail = (dispatch, error) => {
 
 /* RequestIdea */
 
-
 export const requestIdeaChanged = ({ prop, value }) => {
   return {
     type: REQUEST_IDEA_CHANGE,
@@ -49,15 +48,15 @@ export const requestIdeaChanged = ({ prop, value }) => {
   };
 };
 
-export const requestIdea = ({ description, photo }) => {
+export const requestIdea = ({ lat, long, description, photo, range }) => {
   return (dispatch) => {
     getCache('userToken', token => {
       dispatch({ 
         type: REQUEST_IDEA
       });
 
-      axios.post(feedRoute,
-        { description, photo },  
+      axios.post(ideaRoute,
+        { lat, long, description, photo, range },  
         { headers: { Authorization: `Bearer ${token}` } })
         .then(response => requestIdeaSuccess(dispatch, response.data))
         .catch((error) => requestIdeaFail(dispatch, error));

@@ -31,7 +31,6 @@ class Request extends Component {
   }
 
   componentWillMount() {
-    
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position);
       const lat = position.coords.latitude;
@@ -42,8 +41,8 @@ class Request extends Component {
   }
 
   onButtonPress() {
-		const { latitude, longitude, description, photo } = this.props;
-		this.props.createRequest({ latitude, longitude, description, photo });
+		const { lat, long, description, photo, range } = this.props;
+		this.props.createRequest({ lat, long, description, photo, range });
   }
 
   calcDelta(lat, long, accuracy) {
