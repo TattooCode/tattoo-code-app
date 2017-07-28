@@ -13,7 +13,20 @@ const styles = {
     },
     AreaEnterprise: {
         width: '100%',
-        flex: 1
+        height: 40,
+        flex: 1,
+        flexDirection: 'row',
+        borderWidth: 1,
+        borderColor: '#000',
+        borderRightWidth: 0,
+        borderLeftWidth: 0,
+        marginBottom: 20,
+    }, 
+    alignText: {
+        fontSize: 18,
+        lineHeight: 30,
+        fontWeight: 'bold',
+        color: '#0288D1'
     }
 };
 

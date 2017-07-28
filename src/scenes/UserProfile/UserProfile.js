@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View, Dimensions } from 'react-native';
+import { ScrollView, View, Dimensions, TouchableHighlight, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Button } from '../../components/common';
 import { UserInfo } from '../../components/UserInfo';
@@ -25,12 +25,13 @@ class UserProfile extends Component {
     if (this.props.user.id_studio) {
       return (
         <View style={styles.AreaEnterprise}>
-          <Button>
-            Email
-          </Button>
-          <Button>
-            Telefone
-          </Button>
+          <TouchableHighlight style={{ width: (SCREEN_WIDTH / 2), height: 45, alignItems: 'center' }}>
+            <Text style={styles.alignText}>Telefone</Text>
+          </TouchableHighlight>
+
+          <TouchableHighlight style={{ width: (SCREEN_WIDTH / 2), height: 45, alignItems: 'center' }}>
+            <Text style={styles.alignText}>E-mail</Text>
+          </TouchableHighlight>
         </View>
       );
     }
@@ -45,9 +46,9 @@ class UserProfile extends Component {
           </View>
 
           <View>
-            {this.renderExtras()}
+              {this.renderExtras()}  
           </View>
-          
+
           <View>
             <UserPicList style={{ width: '100%' }}>
               {[ 

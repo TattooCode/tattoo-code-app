@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { TouchableOpacity, View, Image, Text } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import styles from './styles';
 import { Card, CardSection } from '../common';
 
@@ -13,28 +14,31 @@ const RequestNotification = ({ notification }) => {
     imageStyle } = styles;
 
   return (
-    <Card>
-      <CardSection>
-        <View style={thumbnailContainerStyle}>
-          <Image
-            style={thumbnailStyle}
-            source={{ uri: user.uri, method: 'GET' }}
-          />
-        </View>
-        <View style={headerContentStyle}>
-            <Text style={headerTextStyle}>{description}</Text>
-            <Text>{user.name}</Text>
-        </View>
-      </CardSection>
+    <TouchableOpacity onPress={() => Actions.userProfile({ user })}>
+      <Card>
+        <CardSection>
+          <View style={thumbnailContainerStyle}>
+            <Image
+              style={thumbnailStyle}
+              source={{ uri: user.uri, method: 'GET' }}
+            />
+          </View>
+          <View style={headerContentStyle}>
+              <Text style={headerTextStyle}>{description}</Text>
+              <Text>{user.name}</Text>
+              <Text>{date}</Text>
+          </View>
+        </CardSection>
 
-      <CardSection>
-        <Image
-          style={imageStyle}
-          source={{ uri, method: 'GET' }}
-        />
-      </CardSection>
-    </Card>
+        <CardSection>
+          <Image
+            style={imageStyle}
+            source={{ uri, method: 'GET' }}
+          />
+        </CardSection>
+      </Card>
+    </TouchableOpacity>
   );
 };
 
-export default RequestNotification;
+export { RequestNotification };

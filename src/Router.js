@@ -26,24 +26,17 @@ const RouterComponent = () => {
           component={LoginMethod}
           hideNavBar={'true'}
         />
-        
         <Scene
           key="loginEmail"
           component={LoginForm}
           title={I18n.t('header_login')}
           hideNavBar={'true'}
         />
-
         <Scene
           key="basicAccountCreate"
           component={BasicAccountCreate}
           title="Create your account"
           hideNavBar={'true'}
-        />
-        <Scene
-          key="notification" 
-          component={Notification}
-          title={I18n.t('navRequest')}
         />
       </Scene>
 
@@ -54,26 +47,28 @@ const RouterComponent = () => {
           component={Feed}
           title="Feed"
         />
-
         <Scene
           key="request" 
           component={Request}
           title={I18n.t('navRequest')}
         />
-      
         <Scene
           key="userProfile" 
           component={UserProfile}
           title={I18n.t('navProfile')}
         />
-
         <Scene
           key="publish" 
           component={Publication}
           title={I18n.t('navPublication')}
         />
+        <Scene
+          key="notification" 
+          component={Notification}
+          title={I18n.t('navPublication')}
+        />
       </Scene>
-    
+
     </Router>
   );
 };

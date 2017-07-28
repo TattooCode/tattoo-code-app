@@ -1,4 +1,4 @@
-export const styles = {
+const styles = {
   headerContentStyle: {
     flexDirection: 'column',
     justifyContent: 'space-around'
@@ -22,3 +22,5 @@ export const styles = {
     width: null
   }
 };
+
+export default styles;

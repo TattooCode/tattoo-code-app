@@ -6,11 +6,7 @@ import {
 
 
 const INITIAL_STATE = {
-  id: null,
-  user: {},
-  uri: '',
-  description: '',
-  date: null,
+  ideas: [],
   error: '',
   loading: false
 };
@@ -20,7 +16,13 @@ export default (state = INITIAL_STATE, action) => {
     case LOAD_IDEA_NOTIFICATIONS:
       return { ...state, error: '', loading: true };
     case LOAD_IDEA_NOTIFICATIONS_SUCCESS:
-      return { ...state, ...INITIAL_STATE };
+      return { 
+        ...state, 
+        ...INITIAL_STATE, 
+        ideas: action.payload,
+        loading: false,
+        error: '' 
+      };
     case LOAD_IDEA_NOTIFICATIONS_FAIL:
       return { ...state, error: 'Error requesting.', loading: false };
     default:
