@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { RequestNotification } from '../../components/RequestNotification';
+import { NavScenes } from '../../components/NavScenes';
 import { loadIdeaNotification } from '../../actions';
 
 class Notification extends Component {
@@ -12,9 +13,15 @@ class Notification extends Component {
 
   render() {
     return (
-      <ScrollView>
-        {this.props.ideas.map(item => <RequestNotification key={item.id} notification={item} />)}
-      </ScrollView>
+      <View>
+        <ScrollView>
+          {this.props.ideas.map(item => <RequestNotification key={item.id} notification={item} />)}
+        </ScrollView>
+
+        <View style={{ flex: 0.1 }}>
+          <NavScenes />
+        </View>
+      </View>
     );
   }
 }

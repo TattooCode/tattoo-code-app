@@ -15,8 +15,9 @@ export const registerUserByFacebookRoute = `${urlBase}/auth/register/facebook`;
 export const registerUserByGoogleRoute = `${urlBase}/auth/register/google`;
 
 export const loadProfileHeaderRoute = `${urlBase}/api/user/profile`;
-export const loadProfileImagesRoute = `${urlBase}/api/perfil/`; //perfil/id
+export const loadProfileImagesRoute = `${urlBase}/api/perfil/`;
 export const feedRoute = `${urlBase}/api/feed`;
+export const loadPostRoute = `${urlBase}/api/feed/user`;
 export const loadStudiosRoute = `${urlBase}/api/studio`;
 
 export const ideaRoute = `${urlBase}/api/idea`;

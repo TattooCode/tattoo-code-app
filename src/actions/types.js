@@ -26,3 +26,6 @@ export const REQUEST_IDEA = 'request_idea';
 export const REQUEST_IDEA_SUCCESS = 'request_idea_success';
 export const REQUEST_IDEA_FAIL = 'request_idea_fail';
 export const REQUEST_IDEA_CHANGE = 'request_idea_change';
+export const LOAD_STUDIO = 'load_studio';
+export const LOAD_STUDIO_SUCCESS = 'load_studio_success';
+export const LOAD_STUDIO_FAIL = 'load_studio_fail';
