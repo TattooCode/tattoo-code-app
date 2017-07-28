@@ -38,7 +38,6 @@ const loadIdeaNotificationFail = (dispatch, error) => {
   dispatch({ type: LOAD_IDEA_NOTIFICATIONS_FAIL });
 };
 
-
 /* RequestIdea */
 
 export const requestIdeaChanged = ({ prop, value }) => {

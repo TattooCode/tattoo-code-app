@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Button } from '../../components/common';
 import { UserInfo } from '../../components/UserInfo';
@@ -7,6 +7,12 @@ import { UserPicList } from '../../components/UserPicList';
 import { NavScenes } from '../../components/NavScenes';
 import { loadHeader, loadImages } from '../../actions';
 import styles from './styles';
+
+
+const { height, width } = Dimensions.get('window');
+const SCREEN_HEIGH = height;
+const SCREEN_WIDTH = width;
+
 
 class UserProfile extends Component {
 
@@ -18,7 +24,7 @@ class UserProfile extends Component {
   renderExtras() {
     if (this.props.user.id_studio) {
       return (
-        <View>
+        <View style={styles.AreaEnterprise}>
           <Button>
             Email
           </Button>
@@ -36,7 +42,10 @@ class UserProfile extends Component {
         <ScrollView style={styles.scrollViewStyles}>
           <View>
               <UserInfo>{this.props.header}</UserInfo>
-              {this.renderExtras()}
+          </View>
+
+          <View>
+            {this.renderExtras()}
           </View>
           
           <View>

@@ -11,6 +11,10 @@ const styles = {
         backgroundColor: '#fff',
         flex: 0.9
     },
+    AreaEnterprise: {
+        width: '100%',
+        flex: 1
+    }
 };
 
 export default styles;
