@@ -18,7 +18,7 @@ const RequestNotification = ({ notification }) => {
         <View style={thumbnailContainerStyle}>
           <Image
             style={thumbnailStyle}
-            source={{ uri }}
+            source={{ uri: user.uri, method: 'GET' }}
           />
         </View>
         <View style={headerContentStyle}>
@@ -30,7 +30,7 @@ const RequestNotification = ({ notification }) => {
       <CardSection>
         <Image
           style={imageStyle}
-          source={{ uri }}
+          source={{ uri, method: 'GET' }}
         />
       </CardSection>
     </Card>
