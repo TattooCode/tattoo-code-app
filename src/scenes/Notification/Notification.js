@@ -10,15 +10,13 @@ class Notification extends Component {
   }
 
   render() {
-    return this.props.notification.map(item =>
+    return this.props.requestNotification.map(item =>
       <RequestNotification key={item.id} notification={item} />);  
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state);
-  const { id, user, uri, description, date } = state;
-  return { id, user, uri, description, date };
+const mapStateToProps = ({ requestNotification }) => {
+  return requestNotification;
 };
 
 export default connect(mapStateToProps, {
