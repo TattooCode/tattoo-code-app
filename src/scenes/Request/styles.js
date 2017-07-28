@@ -21,6 +21,9 @@ const styles = {
         marginTop: 5,
         width: '98%',
         marginLeft: 5
+    },
+    mapStyle: {
+        marginBottom: 20
     }
 };
 

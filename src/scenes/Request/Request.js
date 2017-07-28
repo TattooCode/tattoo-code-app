@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { ScrollView, View, Text, TextInput, Dimensions, Image } from 'react-native';
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps';
+
+import { createRequest } from '../../actions';
+
 import { NavScenes } from '../../components/NavScenes';
 import { ImagePickerComponent } from '../../components/ImagePickerComponent';
 import { Card, CardSection, Button, Spinner } from '../../components/common';
@@ -39,10 +42,8 @@ class Request extends Component {
   }
 
   onButtonPress() {
-    //Create actions
-    
-		const { name, nickname, email, password, biography, photo } = this.props;
-		this.props.createUser({ name, nickname, email, password, biography, photo });
+		const { latitude, longitude, description, photo } = this.props;
+		this.props.createRequest({ latitude, longitude, description, photo });
   }
 
   calcDelta(lat, long, accuracy) {
@@ -74,7 +75,7 @@ class Request extends Component {
 		}
 		
 		return (
-			<Button onPress={this.onButtonPress.bind(this)} style={{ marginTop: 20 }}>
+			<Button onPress={this.onButtonPress.bind(this)}>
 				{I18n.t('button_create_account')}
 			</Button>
 		);
@@ -84,7 +85,7 @@ class Request extends Component {
     return (
       <View style={{ flex: 1 }}>
         <ScrollView style={styles.scrollViewStyles}>
-          <View>
+          <View style={styles.mapStyle}>
             <MapView
               style={{ width: SCREEN_WIDTH, height: (SCREEN_HEIGH / 2), flex: 1 }}
               initialRegion={this.state.region}
@@ -105,15 +106,20 @@ class Request extends Component {
             underlineColorAndroid='transparent'
           />
 
-          <ImagePickerComponent 
+          <ImagePickerComponent
 							updateState={value => {
 								this.props.credentialsChanged({ prop: 'photo', value });
 								this.setState({ thumb: `data:image/jpeg;base64, ${value.data}` });
-							}}
-					>
+              
+					}}>
             <Image 
-              style={{ width: 200, height: 200 }} 
-              source={{ uri: this.state.thumb }}
+              style={{ 
+                width: 200,
+                height: 200, 
+                marginTop: 20, 
+                marginBottom: 20
+              }} 
+              source={{ uri: 'http://via.placeholder.com/200x200' }}
             />
 					</ImagePickerComponent>
           
