@@ -22,6 +22,7 @@ export const loadStudios = () => {
 };
 
 const loadStudiosSuccess = (dispatch, data) => {
+  console.log(data);
   dispatch({
     type: LOAD_STUDIO_SUCCESS,
     payload: data

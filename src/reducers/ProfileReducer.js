@@ -9,7 +9,12 @@ import {
 
 const INITIAL_STATE = {
   images: [],
-  header: {},
+  header: {
+    nickname: '',
+    name: '',
+    biography: '', 
+    uri: null
+  },
   error: '',
   loading: false
 };
