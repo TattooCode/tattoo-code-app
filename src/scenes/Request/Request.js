@@ -3,8 +3,8 @@ import { ScrollView, View, Text, TextInput, Dimensions, Image } from 'react-nati
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps';
 
-// import {  } from '../../actions';
-
+import { requestIdea, requestIdeaChanged } from '../../actions';
+ 
 import { NavScenes } from '../../components/NavScenes';
 import { ImagePickerComponent } from '../../components/ImagePickerComponent';
 import { Button, Spinner } from '../../components/common';
@@ -36,13 +36,19 @@ class Request extends Component {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
       const accuracy = position.coords.accuracy;
+
+      const userPosition = {
+        positionLat: lat,
+        positionLong: long
+      };
+
       this.calcDelta(lat, long, accuracy);
     });
   }
 
   onButtonPress() {
-		const { lat, long, description, photo, range } = this.props;
-		this.props.createRequest({ lat, long, description, photo, range });
+		const { userPosition, description, photo } = this.props;
+		this.props.requestIdea({ userPosition, description, photo });
   }
 
   calcDelta(lat, long, accuracy) {
@@ -107,7 +113,7 @@ class Request extends Component {
 
           <ImagePickerComponent
 						updateState={value => {
-            this.props.credentialsChanged({ prop: 'photo', value });
+            this.props.requestIdeaChanged({ prop: 'photo', value });
             this.setState({ thumb: `data:image/jpeg;base64, ${value.data}` });
 					}}
           >
@@ -134,4 +140,10 @@ class Request extends Component {
   }
 }
 
-export default Request;
+const mapStateToProps = ({ requestNotification }) => {
+  return requestNotification;
+};
+
+export default connect(mapStateToProps, {
+   requestIdea, requestIdeaChanged 
+})(Request);

@@ -48,7 +48,7 @@ export const requestIdeaChanged = ({ prop, value }) => {
   };
 };
 
-export const requestIdea = ({ lat, long, description, photo, range }) => {
+export const requestIdea = ({ userPosition, description, photo }) => {
   return (dispatch) => {
     getCache('userToken', token => {
       dispatch({ 
@@ -56,7 +56,7 @@ export const requestIdea = ({ lat, long, description, photo, range }) => {
       });
 
       axios.post(ideaRoute,
-        { lat, long, description, photo, range },  
+        { userPosition, description, photo },  
         { headers: { Authorization: `Bearer ${token}` } })
         .then(response => requestIdeaSuccess(dispatch, response.data))
         .catch((error) => requestIdeaFail(dispatch, error));

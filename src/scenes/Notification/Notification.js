@@ -21,5 +21,5 @@ const mapStateToProps = ({ requestNotification }) => {
 
 export default connect(mapStateToProps, {
    loadIdeaNotification 
-  })(Notification);
+})(Notification);
 
