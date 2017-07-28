@@ -16,7 +16,12 @@ const styles = {
     },
     inputDescription: {
         width: '95%',
-        marginLeft: 8
+        marginLeft: 8,
+        backgroundColor: '#fff',
+        borderWidth: 0.5,
+        borderColor: '#333',
+        marginTop: 15,
+        borderRadius: 3,
     }
 };
 

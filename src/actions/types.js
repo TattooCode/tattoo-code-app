@@ -19,3 +19,7 @@ export const PUBLISH = 'publish';
 export const PUBLISH_SUCCESS = 'publish_success';
 export const PUBLISH_FAIL = 'publish_fail';
 export const PUBLICATION_CHANGE = 'publication_change';
+export const REQUEST_IDEA = 'request_idea';
+export const REQUEST_IDEA_SUCCESS = 'request_idea_success';
+export const REQUEST_IDEA_FAIL = 'request_idea_fail';
+export const REQUEST_IDEA_CHANGE = 'request_idea_change';

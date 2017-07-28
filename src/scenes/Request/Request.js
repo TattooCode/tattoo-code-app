@@ -107,17 +107,18 @@ class Request extends Component {
           />
 
           <ImagePickerComponent
-							updateState={value => {
-								this.props.credentialsChanged({ prop: 'photo', value });
-								this.setState({ thumb: `data:image/jpeg;base64, ${value.data}` });
-              
-					}}>
+						updateState={value => {
+            this.props.credentialsChanged({ prop: 'photo', value });
+            this.setState({ thumb: `data:image/jpeg;base64, ${value.data}` });
+					}}
+          >
             <Image 
               style={{ 
                 width: 200,
                 height: 200, 
                 marginTop: 20, 
-                marginBottom: 20
+                marginBottom: 20,
+                alignSelf: 'center'
               }} 
               source={{ uri: 'http://via.placeholder.com/200x200' }}
             />
