@@ -3,7 +3,7 @@ import { ScrollView, View, Text, TextInput, Dimensions, Image } from 'react-nati
 import { connect } from 'react-redux';
 import MapView from 'react-native-maps';
 
-import { requestIdea, requestIdeaChanged } from '../../actions';
+import { requestIdea, requestIdeaChanged, loadStudios } from '../../actions';
  
 import { NavScenes } from '../../components/NavScenes';
 import { ImagePickerComponent } from '../../components/ImagePickerComponent';
@@ -33,6 +33,8 @@ class Request extends Component {
 
   componentWillMount() {
     this.setState({ thumb: 'https://brewerjwebdesign.com/wp-content/uploads/2014/03/wp_upload_bits.png' });
+    this.props.loadStudios();
+
 
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position);
@@ -40,6 +42,12 @@ class Request extends Component {
       const long = position.coords.longitude;
       const accuracy = position.coords.accuracy;
 
+      this.props.userPosition = {
+        positionLat: lat,
+        positionLong: long
+      };
+
+      console.log(this.props);
       this.calcDelta(lat, long, accuracy);
     });
   }
@@ -141,10 +149,11 @@ class Request extends Component {
   }
 }
 
-const mapStateToProps = ({ requestNotification }) => {
-  return requestNotification;
+const mapStateToProps = ({ studios, idea }) => {
+  const { userPosition, description, photo } = idea;
+  return { studios, userPosition, description, photo };
 };
 
 export default connect(mapStateToProps, {
-   requestIdea, requestIdeaChanged 
+   requestIdea, requestIdeaChanged, loadStudios 
 })(Request);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getCache } from '../config/Storage';
-import { loadProfileHeaderRoute, loadProfileImagesRoute } from '../config/Routes';
+import { loadProfileHeaderRoute, loadPostRoute } from '../config/Routes';
 import {
   LOAD_PROFILE_HEADER_SUCCESS,
   LOAD_PROFILE_HEADER_FAIL,
@@ -31,10 +31,10 @@ export const loadImages = (authorId = '') => {
       dispatch({ 
         type: LOAD_PROFILE_IMAGES
       });
-      axios.post(`${loadProfileImagesRoute}/${authorId}`, 
+      axios.post(`${loadPostRoute}/${authorId}`, 
       { headers: { Authorization: `Bearer ${token}` } })
         .then(response => loadImagesSuccess(dispatch, response.data))
-        .catch(() => loadImageFail(dispatch));
+        .catch(error => loadImageFail(dispatch, error));
     });
   };
 };
@@ -50,13 +50,15 @@ const loadHeaderFail = dispatch => {
   dispatch({ type: LOAD_PROFILE_HEADER_FAIL });
 };
 
-const loadImagesSuccess = (dispatch, component) => {
+const loadImagesSuccess = (dispatch, images) => {
+  console.log(images);
   dispatch({
     type: LOAD_PROFILE_IMAGES_SUCCESS,
-    payload: component
+    payload: images
   });
 };
 
-const loadImageFail = dispatch => {
+const loadImageFail = (dispatch, error) => {
+  console.log(error);
   dispatch({ type: LOAD_PROFILE_IMAGES_FAIL });
 };
