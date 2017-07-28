@@ -6,7 +6,8 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-    userPosition: {},
+    latitude: '',
+    longitude: '',
     description: '', 
     photo: '',
     error: '',

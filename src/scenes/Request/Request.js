@@ -7,7 +7,7 @@ import { requestIdea, requestIdeaChanged } from '../../actions';
  
 import { NavScenes } from '../../components/NavScenes';
 import { ImagePickerComponent } from '../../components/ImagePickerComponent';
-import { Button, Spinner } from '../../components/common';
+import { Button, Spinner, Input } from '../../components/common';
 import styles from './styles';
 import I18n from '../../config/i18n';
 
@@ -26,29 +26,27 @@ class Request extends Component {
         longitude: -122.4324,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
-      }
+      },
+      description: ''
     };
   }
 
   componentWillMount() {
+    this.setState({ thumb: 'https://brewerjwebdesign.com/wp-content/uploads/2014/03/wp_upload_bits.png' });
+
     navigator.geolocation.getCurrentPosition((position) => {
       console.log(position);
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
       const accuracy = position.coords.accuracy;
 
-      const userPosition = {
-        positionLat: lat,
-        positionLong: long
-      };
-
       this.calcDelta(lat, long, accuracy);
     });
   }
 
   onButtonPress() {
-		const { userPosition, description, photo } = this.props;
-		this.props.requestIdea({ userPosition, description, photo });
+		const { latitude, longitude, description, photo } = this.props;
+		this.props.requestIdea({ latitude, longitude, description, photo });
   }
 
   calcDelta(lat, long, accuracy) {
@@ -97,8 +95,8 @@ class Request extends Component {
             >
               <MapView.Marker 
                 coordinate={this.marker()}
-                title="EU"
-                description="Home"
+                title="Eu"
+                description="Minha localização"
               />
             </MapView>
           </View>
@@ -109,12 +107,15 @@ class Request extends Component {
             numberOfLines={4}
             style={styles.inputDescription} 
             underlineColorAndroid='transparent'
+            onChangeText={(description) => this.setState({ description })}
+            value={this.state.description}
           />
 
           <ImagePickerComponent
 						updateState={value => {
             this.props.requestIdeaChanged({ prop: 'photo', value });
             this.setState({ thumb: `data:image/jpeg;base64, ${value.data}` });
+            this.setState({ photo: value });
 					}}
           >
             <Image 
@@ -125,7 +126,7 @@ class Request extends Component {
                 marginBottom: 20,
                 alignSelf: 'center'
               }} 
-              source={{ uri: 'http://via.placeholder.com/200x200' }}
+              source={{ uri: this.state.thumb }}
             />
 					</ImagePickerComponent>
           
