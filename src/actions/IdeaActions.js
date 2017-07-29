@@ -47,8 +47,10 @@ export const requestIdeaChanged = ({ prop, value }) => {
   };
 };
 
-export const requestIdea = ({ userPosition, description, photo }) => {
-  console.log({ userPosition, description, photo });
+export const requestIdea = ({ latitude, longitude, description, photo }) => {
+  console.log('Action request ideia');
+  console.log({ latitude, longitude, description, photo });
+
   return (dispatch) => {
     getCache('userToken', token => {
       dispatch({ 

@@ -22,8 +22,8 @@ class Request extends Component {
 
     this.state = {
       region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
+        latitude: -29.584497,
+        longitude: -51.089526,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
       },
@@ -35,25 +35,24 @@ class Request extends Component {
     this.setState({ thumb: 'https://brewerjwebdesign.com/wp-content/uploads/2014/03/wp_upload_bits.png' });
     this.props.loadStudios();
 
+    console.log(this.props.studios);
+
 
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position);
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
       const accuracy = position.coords.accuracy;
 
-      this.props.userPosition = {
-        positionLat: lat,
-        positionLong: long
-      };
-
-      console.log(this.props);
       this.calcDelta(lat, long, accuracy);
     });
   }
 
-  onButtonPress() {
-		const { latitude, longitude, description, photo } = this.props;
+  onButtonPress() {    
+    const latitude = this.state.region.latitude;
+    const longitude = this.state.region.longitude;
+    const description = this.state.description;
+    const photo = this.state.photo;
+
 		this.props.requestIdea({ latitude, longitude, description, photo });
   }
 
@@ -75,8 +74,6 @@ class Request extends Component {
 
   marker() {
     return {
-
-      
       latitude: this.state.region.latitude,
       longitude: this.state.region.longitude
     };
@@ -103,11 +100,14 @@ class Request extends Component {
               style={{ width: SCREEN_WIDTH, height: (SCREEN_HEIGH / 2), flex: 1 }}
               initialRegion={this.state.region}
             >
-              <MapView.Marker 
-                coordinate={this.marker()}
-                title="Eu"
-                description="Minha localização"
-              />
+              {this.props.studios.studios.map(item =>
+                <MapView.Marker 
+                  coordinate={{ latitude: parseInt(item.latitude, 10), longitude: parseInt(item.longitude, 10)}}
+                  title={item.name}
+                  description={item.social_name}
+                />
+              )}
+              
             </MapView>
           </View>
           
@@ -149,11 +149,11 @@ class Request extends Component {
       </View>
     );
   }
-}
+} 
 
 const mapStateToProps = ({ studios, idea }) => {
-  const { userPosition, description, photo } = idea;
-  return { studios, userPosition, description, photo };
+  const { latitude, longitude, description, photo } = idea;
+  return { studios, latitude, longitude, description, photo };
 };
 
 export default connect(mapStateToProps, {
