@@ -8,17 +8,15 @@ import { NavScenes } from '../../components/NavScenes';
 import { loadHeader, loadImages } from '../../actions';
 import styles from './styles';
 
-
 const { height, width } = Dimensions.get('window');
 const SCREEN_HEIGH = height;
 const SCREEN_WIDTH = width;
-
 
 class UserProfile extends Component {
 
   componentWillMount() {
     this.props.loadHeader(this.props.user.id);
-    //this.props.loadImages();
+    this.props.loadImages(this.props.user.id);
   }
 
   renderExtras() {
@@ -57,9 +55,9 @@ class UserProfile extends Component {
                 { id: 3, uri: 'http://via.placeholder.com/120x120' }
               ]}
             </UserPicList>
-            {/*<UserPicList style={{ flexDirection: 'row' }}>
+            <UserPicList style={{ flexDirection: 'row' }}>
                 {this.props.images}
-            </UserPicList>*/}
+            </UserPicList>
           </View> 
         </ScrollView>
 

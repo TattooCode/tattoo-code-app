@@ -20,7 +20,7 @@ export const loadHeader = (authorId = '') => {
       axios.get(`${loadProfileHeaderRoute}/${authorId}`, 
       { headers: { Authorization: `Bearer ${token}` } })
         .then(response => loadHeaderSuccess(dispatch, response.data))
-        .catch(() => loadHeaderFail(dispatch));
+        .catch(error => loadHeaderFail(dispatch, error));
     });
   };
 };
@@ -46,7 +46,8 @@ const loadHeaderSuccess = (dispatch, component) => {
   });
 };
 
-const loadHeaderFail = dispatch => {
+const loadHeaderFail = (dispatch, error) => {
+  console.log(error);
   dispatch({ type: LOAD_PROFILE_HEADER_FAIL });
 };
 
