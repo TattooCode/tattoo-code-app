@@ -22,7 +22,7 @@ const styles = {
   errorTextStyle: {
     fontSize: 20,
     alignSelf: 'center',
-    color: '#F2F6F5'
+    color: 'red'
   },
   cardSpace: {
     marginBottom: 10
