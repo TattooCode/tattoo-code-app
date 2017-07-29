@@ -9,12 +9,7 @@ import {
 
 const INITIAL_STATE = {
   images: [],
-  header: {
-    nickname: '',
-    name: '',
-    biography: '', 
-    uri: null
-  },
+  header: {},
   error: '',
   loading: false
 };
@@ -24,13 +19,13 @@ export default (state = INITIAL_STATE, action) => {
     case LOAD_PROFILE_HEADER:
       return { ...state, error: '', loading: true };
     case LOAD_PROFILE_HEADER_SUCCESS:
-      return { ...state, ...INITIAL_STATE, header: action.payload };
+      return { ...state, header: action.payload };
     case LOAD_PROFILE_HEADER_FAIL:
       return { ...state, error: 'Error when requesting profile', loading: false };
     case LOAD_PROFILE_IMAGES:
-      return { ...state, header: action.payload, loading: true };
+      return { ...state, error: '', loading: true };
     case LOAD_PROFILE_IMAGES_SUCCESS:
-      return { ...state, ...INITIAL_STATE, image: action.payload };  
+      return { ...state, images: action.payload };  
     case LOAD_PROFILE_IMAGES_FAIL:
       return { ...state, error: 'Error when requesting profile', loading: false };  
     default:

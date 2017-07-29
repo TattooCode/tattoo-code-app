@@ -15,8 +15,8 @@ const SCREEN_WIDTH = width;
 class UserProfile extends Component {
 
   componentWillMount() {
-    this.props.loadHeader(this.props.user.id);
     this.props.loadImages(this.props.user.id);
+    this.props.loadHeader(this.props.user.id);
   }
 
   renderExtras() {
@@ -39,25 +39,18 @@ class UserProfile extends Component {
     return (
       <View style={{ flex: 1 }}>
         <ScrollView style={styles.scrollViewStyles}>
-          <View>
+           <View>
               <UserInfo>{this.props.header}</UserInfo>
-          </View>
+          </View> 
 
           <View>
               {this.renderExtras()}  
           </View>
 
           <View>
-            <UserPicList style={{ width: '100%' }}>
-              {[ 
-                { id: 1, uri: 'http://via.placeholder.com/120x120' },
-                { id: 2, uri: 'http://via.placeholder.com/120x120' },
-                { id: 3, uri: 'http://via.placeholder.com/120x120' }
-              ]}
-            </UserPicList>
-            <UserPicList style={{ flexDirection: 'row' }}>
+             <UserPicList style={{ flexDirection: 'row' }}>
                 {this.props.images}
-            </UserPicList>
+            </UserPicList> 
           </View> 
         </ScrollView>
 
@@ -72,6 +65,7 @@ class UserProfile extends Component {
 
 const mapStateToProps = ({ profile }) => {
   const { header, images } = profile;
+  console.log(header);
   return { header, images };
 };
 

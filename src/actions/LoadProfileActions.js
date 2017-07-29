@@ -31,7 +31,7 @@ export const loadImages = (authorId = '') => {
       dispatch({ 
         type: LOAD_PROFILE_IMAGES
       });
-      axios.post(`${loadPostRoute}/${authorId}`, 
+      axios.get(`${loadPostRoute}/${authorId}`, 
       { headers: { Authorization: `Bearer ${token}` } })
         .then(response => loadImagesSuccess(dispatch, response.data))
         .catch(error => loadImageFail(dispatch, error));
@@ -39,10 +39,10 @@ export const loadImages = (authorId = '') => {
   };
 };
 
-const loadHeaderSuccess = (dispatch, component) => {
+const loadHeaderSuccess = (dispatch, header) => {
   dispatch({
     type: LOAD_PROFILE_HEADER_SUCCESS,
-    payload: component
+    payload: header
   });
 };
 
@@ -52,7 +52,6 @@ const loadHeaderFail = (dispatch, error) => {
 };
 
 const loadImagesSuccess = (dispatch, images) => {
-  console.log(images);
   dispatch({
     type: LOAD_PROFILE_IMAGES_SUCCESS,
     payload: images
