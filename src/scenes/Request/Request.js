@@ -110,6 +110,7 @@ class Request extends Component {
             >
                {this.props.studios.studios.map(item =>
                 <MapView.Marker 
+                  key={item.id}
                   coordinate={{ latitude: Number(item.latitude), longitude: Number(item.longitude) }}
                   title={item.name}
                   description={item.social_name}
