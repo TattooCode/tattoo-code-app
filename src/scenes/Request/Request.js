@@ -26,8 +26,7 @@ class Request extends Component {
         longitude: -51.089526,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
-      },
-      description: ''
+      }
     };
   }
 
@@ -37,8 +36,9 @@ class Request extends Component {
 
     console.log(this.props.studios);
 
-
     navigator.geolocation.getCurrentPosition((position) => {
+      console.log('Position');
+      console.log(position);
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
       const accuracy = position.coords.accuracy;
@@ -70,6 +70,9 @@ class Request extends Component {
         longitudeDelta: longDelta
       }
     });
+    
+    console.log('Update region');
+    console.log(this.state.region);
   }
 
   marker() {
@@ -100,14 +103,13 @@ class Request extends Component {
               style={{ width: SCREEN_WIDTH, height: (SCREEN_HEIGH / 2), flex: 1 }}
               initialRegion={this.state.region}
             >
-              {this.props.studios.studios.map(item =>
+               {this.props.studios.studios.map(item =>
                 <MapView.Marker 
-                  coordinate={{ latitude: parseInt(item.latitude, 10), longitude: parseInt(item.longitude, 10)}}
+                  coordinate={this.marker()}
                   title={item.name}
                   description={item.social_name}
                 />
               )}
-              
             </MapView>
           </View>
           
