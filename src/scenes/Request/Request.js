@@ -101,11 +101,16 @@ class Request extends Component {
           <View style={styles.mapStyle}>
             <MapView
               style={{ width: SCREEN_WIDTH, height: (SCREEN_HEIGH / 2), flex: 1 }}
-              initialRegion={this.state.region}
+              initialRegion={{
+                latitude: -29.584497,
+                longitude: -51.089526,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421
+              }}
             >
                {this.props.studios.studios.map(item =>
                 <MapView.Marker 
-                  coordinate={this.marker()}
+                  coordinate={{ latitude: Number(item.latitude), longitude: Number(item.longitude) }}
                   title={item.name}
                   description={item.social_name}
                 />
